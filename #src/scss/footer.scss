@@ -1,0 +1,179 @@
+.footer {
+  background-color: $mainDarkColor;
+  &__text {
+    @include adaptiveValue("padding-top", 60, 40);
+    @include adaptiveValue("padding-bottom", 60, 40);
+  }
+  &__body {
+    @include adaptiveValue("padding-top", 60, 40);
+    @include adaptiveValue("padding-bottom", 50, 40);
+  }
+}
+.text-footer {
+  background: url("../img/footer/bg.jpg") top/cover no-repeat;
+  &__title {
+    text-align: center;
+    color: $mainOrangeColor;
+    font-weight: bold;
+    @include adaptiveValue("font-size", 30, 24);
+    line-height: math.div(46, 30);
+    &:not(:last-child) {
+      margin-bottom: rem(16);
+    }
+  }
+
+  &__text {
+    color: #fff;
+    @include adaptiveValue("font-size", 18, 16);
+    line-height: math.div(27, 18);
+  }
+}
+.body-footer {
+  display: grid;
+  @include adaptiveValue("row-gap", 35, 15);
+  &__row {
+    padding: 2.1875rem 0px 1.875rem 0px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(rem(290), 1fr));
+    column-gap: rem(40);
+    @include adaptiveValue("row-gap", 40, 20);
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+  }
+  &__item {
+    margin-bottom: 20px;
+  }
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: rem(20);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    line-height: math.div(27, 14);
+    @media (min-width: 1200px) {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+  }
+  &__rules {
+    max-width: 820px;
+  }
+  &__copy {
+    span {
+      white-space: nowrap;
+    }
+  }
+}
+.spollers-item-footer {
+  &__title {
+    color: #fff;
+    ._spoller-init & {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(10);
+      &::after {
+        content: "\e900";
+        @extend %ic;
+        font-size: rem(8);
+        margin-top: 7px;
+        transition: all 0.3s ease 0s;
+      }
+      &._spoller-active {
+        &::after {
+          transform: rotate(-180deg);
+        }
+      }
+    }
+  }
+
+  &__body {
+    @include adaptiveValue("padding-top", 30, 15);
+    @include adaptiveValue("padding-bottom", 30, 15);
+  }
+  &__text {
+    max-width: 320px;
+    line-height: math.div(27, 18);
+    color: #fff;
+    a {
+      color: $mainOrangeColor;
+      @media (any-hover: hover) {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+.menu-footer {
+  &__item {
+    line-height: 1.5;
+    display: flex;
+    color: rgba(255, 255, 255, 0.8);
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+    &::before {
+      font-size: rem(15);
+      margin: rem(6) rem(11) 0 0;
+    }
+  }
+  &__link {
+    display: inline-flex;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    &::before {
+      margin-right: 12px;
+      font-size: rem(20);
+    }
+    &._icon-email {
+      &::before {
+        font-size: rem(13);
+      }
+    }
+  }
+}
+.social-footer {
+  padding: 10px 0;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.footer-subscribe {
+  &__label {
+    line-height: math.div(22, 18);
+    display: block;
+    color: #fff;
+    &:not(:last-child) {
+      margin-bottom: rem(6);
+    }
+  }
+  &__line {
+    display: flex;
+    border-radius: rem(3);
+    overflow: hidden;
+  }
+  &__input {
+    background: rgba(255, 255, 255, 0.05);
+    height: rem(48);
+    padding: 0 20px;
+    color: #fff;
+    width: 100%;
+    border: 1px solid #fff;
+  }
+  &__button {
+    flex: 0 0 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $mainOrangeColor;
+    &::before {
+      color: #fff;
+      font-size: rem(8);
+      transform: rotate(-90deg);
+    }
+  }
+}

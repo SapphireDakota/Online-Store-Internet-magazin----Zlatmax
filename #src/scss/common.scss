@@ -1,0 +1,240 @@
+.products-slider,
+.sale-products {
+  &__header {
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 50, 30);
+    }
+    @media (min-width: $mobile) {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:rem(20);
+    }
+  }
+  &__title {
+    letter-spacing: 0.05em;
+    font-size: rem(30);
+    font-weight: 700;
+    line-height: math.div(46, 30);
+  }
+  &__more {
+    color: rgba(20, 20, 20, 0.58);
+    transition: color 0.3s ease 0s;
+    font-weight: 600;
+    font-size: rem(18);
+    display: inline-flex;
+    align-items: center;
+    gap: rem(12);
+    &::after {
+      @extend %ic;
+      content: "\e900";
+      font-size: rem(8);
+      transform: rotate(-90deg);
+      color: $mainOrangeColor;
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        color: rgba(20, 20, 20, 1);
+      }
+    }
+  }
+  &__slider {
+    padding: rem(15) rem(20);
+    margin: 0 rem(20);
+    text-align: center;
+  }
+  &__swiper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+.product-card {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease 0s;
+  background-color: #fefefe;
+  @media (any-hover: hover) {
+    &:hover {
+      box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.2);
+    }
+  }
+  &__image {
+    @include adaptiveValue("padding-top", 25, 15);
+    @include adaptiveValue("padding-bottom", 25, 15);
+    @include adaptiveValue("padding-left", 50, 15);
+    @include adaptiveValue("padding-right", 50, 15);
+    &-ibg {
+      display: block;
+      padding-bottom: percent(240, 270);
+    }
+  }
+  &__body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__title {
+    font-size: rem(20);
+    font-weight: 600;
+    line-height: 34px;
+    &:not(:last-child) {
+      margin-bottom: rem(15);
+    }
+    @media (any-hover: hover) {
+      text-decoration: underline;
+    }
+  }
+  &__info {
+    &:not(:last-child) {
+      margin-bottom: rem(26);
+    }
+  }
+  &__rating {
+    justify-content: space-between;
+    &:not(:last-child) {
+      margin-bottom: 1.625rem;
+    }
+  }
+  &__footer {
+    border-top: 1px solid rgba(20, 20, 20, 0.5);
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: rem(15);
+  }
+  &__price {
+    text-align: start;
+    flex: 1 1 auto;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: math.div(34, 20);
+  }
+  &__campare,
+  &__favorite {
+    font-size: rem(24);
+    transition: color 0.3s ease 0s;
+    @media (any-hover: hover) {
+      &:hover {
+        color: $mainOrangeColor;
+      }
+    }
+  }
+  &__cart {
+    span {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      &::before {
+        margin-left: 16px;
+      }
+    }
+  }
+}
+.info-product-card {
+  color: #ababab;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 16px;
+}
+.rating__info {
+  color: #ababab;
+  font-size: 16px;
+}
+
+.new-products {
+  padding-top: 45px;
+  position: relative;
+  background: url("../img/new-products/bg.webp") bottom/cover no-repeat;
+  &::before {
+    content: "";
+    background-color: #fff;
+    height: 45px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: percent(1030, 1920);
+  }
+  &__container {
+    display: grid;
+    row-gap: 30px;
+    @media (min-width: $tablet) {
+      grid-template-columns: rem(400) 1fr;
+      align-items: start;
+    }
+  }
+
+  &__inner {
+    @include adaptiveValue("padding-top", 55, 20);
+    @include adaptiveValue("padding-bottom", 55, 20);
+  }
+
+  &__body {
+    @include adaptiveValue("padding-right", 70, 30);
+  }
+
+  &__section {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 30px;
+    line-height: math.div(46, 30);
+    color: #fff;
+    &:not(:last-child) {
+      margin-bottom: rem(16);
+    }
+  }
+
+  &__text {
+    font-size: 18px;
+    line-height: math.div(27, 18);
+    letter-spacing: 0.03em;
+    color: rgba(255, 255, 255, 0.7);
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 60, 20);
+    }
+  }
+
+  &__slider {
+    min-width: 0;
+    display: flex;
+    padding-top: rem(37);
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__swiper {
+    gap: 20px;
+    display: flex;
+  }
+}
+.link-arrow {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  color: $mainOrangeColor;
+  font-size: 20px;
+  font-weight: 600;
+  &::before {
+    margin-left: rem(12);
+    transform: rotate(-90deg);
+    font-size: 8px;
+  }
+  @media (any-hover: hover) {
+    &:hover {
+      span {
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,0 +1,631 @@
+.top-header {
+  background-color: $mainDarkColor;
+  color: white;
+  padding: rem(10) 0;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: rem(20);
+    min-height: rem(50);
+    @media (max-width: $tablet) {
+      gap: rem(30);
+    }
+  }
+
+  &__menu {
+    flex: 1 1 auto;
+  }
+
+  &__user {
+    position: relative;
+    z-index: 5;
+    display: inline-flex;
+    font-weight: 600;
+    align-items: center;
+    line-height: math.div(22, 18);
+    gap: rem(14);
+    &::before {
+      font-size: rem(28);
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    @media (max-width: $tablet) {
+      &::before {
+        font-size: rem(35);
+      }
+      span {
+        display: none;
+      }
+    }
+  }
+}
+.menu {
+  &__body {
+    @media (max-width: $tablet) {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: -100%;
+      overflow: auto;
+      background-color: $mainDarkColor;
+      padding: rem(100) rem(15) rem(50);
+      z-index: 4;
+      transition: left 0.3s ease;
+      &::before {
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 70px;
+        left: -100;
+        top: 0;
+        background-color: $mainDarkColor;
+      }
+      .menu-open & {
+        left: 0;
+        &::before {
+          left: 0;
+        }
+      }
+    }
+  }
+  @media (max-width: $tablet) {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: end;
+  }
+}
+
+.body-header {
+  padding: rem(10) 0;
+  background-color: #ecf1f2;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    min-height: rem(70);
+    justify-content: space-between;
+    @media (max-width: $tablet) {
+      justify-content: space-between;
+    }
+    @media (max-width: $mobileSmall) {
+      justify-content: center;
+    }
+  }
+
+  &__logo {
+    @extend %ic;
+    @extend ._icon-logo;
+    font-size: rem(42);
+    color: $mainDarkColor;
+  }
+
+  &__search {
+    flex: 1 1 auto;
+    @include adaptiveValue("padding-left", 158, 20, 767);
+    @media (min-width: $tablet) {
+      padding-right: rem(20);
+    }
+    @media (min-width: $mobileSmall) {
+      @include adaptiveValue("padding-left", 80, 20, 480);
+    }
+  }
+}
+.search-header {
+  background-color: rgba(7, 7, 7, 0.03);
+  border-radius: 3px;
+  position: relative;
+  border: 1px solid rgba(4, 4, 4, 0.5);
+  @media (min-width: $tablet) {
+    max-width: rem(377);
+  }
+
+  &__button {
+    position: absolute;
+    background-color: transparent;
+    height: rem(41);
+    width: rem(41);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: rem(8);
+    font-size: rem(14);
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  &__input {
+    width: 100%;
+    color: $mainColor;
+    background-color: transparent;
+    border-radius: rem(3);
+    height: rem(41);
+    padding: 0px 20px 0px 50px;
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  @media (max-width: $mobileSmall) {
+    background-color: #fff;
+  }
+}
+.actions-header {
+  display: flex;
+  align-items: center;
+  @media (max-width: $tablet) {
+    display: none;
+  }
+  @include adaptiveValue("column-gap", 30, 15, 1000);
+
+  &__location {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    margin-right: rem(25);
+    &::before {
+      font-size: rem(24);
+      margin-right: rem(10);
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__favorite {
+    font-size: rem(27);
+    position: relative;
+    z-index: 5;
+  }
+
+  &__cart {
+    flex: 0 0 auto;
+  }
+}
+.phones-header {
+  position: relative;
+  z-index: 5;
+  &__item {
+    position: relative;
+    display: flex;
+  }
+
+  &__phone {
+    font-weight: 600;
+    line-height: math.div(22, 18);
+    white-space: nowrap;
+    &::before {
+      @extend %ic;
+      @extend ._icon-phone;
+      display: none;
+    }
+    @media (max-width: $tablet) {
+      font-size: rem(25);
+    }
+    @media (max-width: $mobileSmall) {
+      &::before {
+        display: block;
+        font-size: rem(32);
+      }
+      span {
+        display: none;
+      }
+    }
+  }
+
+  &__arrow {
+    color: $mainOrangeColor;
+    font-size: rem(10);
+    margin-left: rem(17);
+    transition: all 0.5s ease;
+    &._active-spoiler {
+      transform: rotate(-180deg);
+    }
+    @media (max-width: $tablet) {
+      display: none;
+    }
+  }
+
+  &__list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    padding: rem(10);
+    border-radius: rem(10);
+    margin-left: rem(-10);
+    li {
+      &:not(:last-child) {
+        margin-bottom: rem(8);
+      }
+    }
+    @media (max-width: $tablet) {
+      display: none;
+    }
+  }
+
+  &__callback {
+    margin-top: rem(3);
+    color: $mainOrangeColor;
+    font-weight: 700;
+    line-height: rem(26);
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    @media (max-width: $tablet) {
+      display: none;
+    }
+  }
+}
+.cart-header {
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+  &__icon {
+    flex: 0 0 37px;
+    font-size: rem(35);
+    position: relative;
+    span {
+      position: absolute;
+      width: rem(14);
+      height: rem(14);
+      font-size: rem(8);
+      background-color: $mainOrangeColor;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      right: 0;
+      color: #fff;
+    }
+  }
+
+  &__body {
+    font-size: rem(16);
+    line-height: rem(20);
+    flex: 0 0 auto;
+    @media (max-width: rem(1250)) {
+      display: none;
+    }
+  }
+
+  &__summ {
+    font-weight: 500;
+    &:not(:last-child) {
+      margin-bottom: rem(6);
+    }
+  }
+
+  &__link {
+    color: $mainOrangeColor;
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.catalog-header {
+  background-color: $mainDarkColor;
+  color: white;
+  position: relative;
+
+  @media (max-width: $mobileSmall) {
+    padding: rem(20) 0;
+  }
+}
+.menu-catalog {
+  &__list {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    @media (max-width: $tablet) {
+      flex-direction: column;
+      row-gap: rem(25);
+    }
+  }
+
+  &__link {
+    display: flex;
+    position: relative;
+    transition: color 0.3s ease;
+    &[data-parent] {
+      &::before {
+        @extend %ic;
+        @extend ._icon-arrow-btm;
+        display: none;
+        @media (max-width: $tablet) {
+          transform: translateY(rem(7)) rotate(-90deg);
+          display: block;
+          font-size: rem(10);
+        }
+      }
+      @media (max-width: $tablet) {
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+      }
+    }
+    @media (min-width: $tablet) {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: rem(70);
+      padding: 0 rem(10);
+    }
+    &::after {
+      content: "";
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      bottom: 0;
+      left: rem(10);
+      height: 1px;
+      background-color: $mainOrangeColor;
+      width: calc(100% - rem(20));
+      transition: all 0.3s ease;
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        color: $mainOrangeColor;
+        &::after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+    @media (min-width: $tablet) {
+      &._sub-menu-active {
+        color: $mainOrangeColor;
+        opacity: 1;
+        visibility: visible;
+        &::after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+
+    @media (max-width: $tablet) {
+      @include adaptiveValue("font-size", 30, 20);
+    }
+  }
+
+  &__sub-menu {
+    background-color: $mainDarkColor;
+  }
+  &__back {
+    display: none;
+    @media (max-width: $tablet) {
+      display: inline-flex;
+      align-items: center;
+      @include adaptiveValue("font-size", 30, 20);
+      &:not(:last-child) {
+        margin-bottom: rem(32);
+      }
+      &::before {
+        margin-right: rem(12.5);
+      }
+    }
+  }
+  @media (max-width: $tablet) {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: $mainDarkColor;
+    padding: rem(25) rem(15) rem(50);
+    transition: left 0.3s ease;
+    .catalog-open & {
+      left: 0;
+      z-index: 6;
+    }
+  }
+}
+.sub-menu-catalog {
+  &__back {
+    display: none;
+    @media (max-width: $tablet) {
+      display: inline-flex;
+      align-items: center;
+      @include adaptiveValue("font-size", 30, 20);
+      &:not(:last-child) {
+        margin-bottom: rem(32);
+      }
+      &::before {
+        margin-right: rem(12.5);
+      }
+    }
+  }
+  @media (max-width: $tablet) {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: $mainDarkColor;
+    padding: rem(25) rem(15) rem(50);
+    transition: left 0.3s ease;
+    .sub-menu-open & {
+      left: 0;
+      z-index: 6;
+      display: block;
+    }
+  }
+  &__block {
+    display: none;
+    @media (max-width: $tablet) {
+      > :not(.sub-menu-catalog__category) {
+        display: none;
+      }
+    }
+    &._sub-menu-open {
+      display: grid;
+      @media (max-width: $tablet) {
+        display: block;
+      }
+    }
+  }
+  &__container {
+    padding: 0 rem(10);
+  }
+  &__category {
+    font-size: rem(16);
+    line-height: rem(20);
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    @media (min-width: $tablet) {
+      padding: rem(30) rem(15) rem(30) 0;
+      font-weight: 700;
+    }
+    @media (max-width: $tablet) {
+      &:not(:last-child) {
+        margin-bottom: rem(25);
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: rem(20);
+    padding: rem(30) rem(15) rem(30) 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  &__link {
+    font-size: rem(16);
+    line-height: rem(20);
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  &__footer {
+    padding: rem(30) rem(15) rem(30) 0;
+  }
+  &__all {
+    font-size: rem(16);
+    color: $mainOrangeColor;
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.menu-top-header {
+  &__item {
+    &_catalog {
+      @media (min-width: $tablet) {
+        display: none;
+      }
+    }
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 5px;
+    @include adaptiveValue("column-gap", 60, 20);
+    @media (max-width: $tablet) {
+      flex-direction: column;
+      row-gap: 25px;
+    }
+  }
+
+  &__link {
+    font-size: rem(16);
+    line-height: math.div(20, 16);
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    &_catalog {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+      &::before {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 0 0 14px;
+        height: 14px;
+        font-size: rem(10);
+        transform: translateY(rem(-2)) rotate(-90deg);
+      }
+    }
+    @media (max-width: $tablet) {
+      @include adaptiveValue("font-size", 40, 20);
+    }
+  }
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.icon-menu {
+  @media (max-width: $tablet) {
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 22.5px;
+    cursor: pointer;
+    z-index: 10;
+    span,
+    &::before,
+    &::after {
+      content: "";
+      transition: all 0.3s ease 0s;
+      left: 0px;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+    }
+    &::before {
+      top: 0;
+    }
+    &::after {
+      bottom: 0;
+    }
+    span {
+      top: calc(50% - 1px);
+    }
+    .menu-open & {
+      span {
+        transform: scale(0);
+      }
+      &::before {
+        transform: rotate(-45deg);
+        top: calc(50% - 1px);
+      }
+      &::after {
+        transform: rotate(45deg);
+        top: calc(50% - 1px);
+      }
+    }
+  }
+}

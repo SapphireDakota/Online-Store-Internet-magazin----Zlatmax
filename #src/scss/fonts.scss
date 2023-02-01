@@ -1,0 +1,64 @@
+@include font("icons", "icons", "400", "normal");
+
+%ic {
+  font-family: icons;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class*="_icon-"] {
+  &:before {
+    @extend %ic;
+    display: block;
+  }
+}
+
+._icon- {
+  &arrow-btm:before {
+    content: "\e900";
+  }
+  &arrow-left:before {
+    content: "\e901";
+  }
+  &cart:before {
+    content: "\e902";
+  }
+  &favorite:before {
+    content: "\e903";
+  }
+  &clock:before {
+    content: "\e904";
+  }
+  &location:before {
+    content: "\e905";
+  }
+  &mail:before {
+    content: "\e906";
+  }
+  &phone:before,
+  .phones-header__phone:before {
+    content: "\e907";
+  }
+  &location:before {
+    content: "\e908";
+  }
+  &logo:before {
+    content: "\e909";
+  }
+  &scales:before {
+    content: "\e90a";
+  }
+  &search:before {
+    content: "\e90b";
+  }
+  &spoiler-arrow:before {
+    content: "\e90c";
+  }
+  &user:before {
+    content: "\e90d";
+  }
+}
